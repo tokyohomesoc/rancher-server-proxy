@@ -3,7 +3,7 @@
 #// config
 #/////////////////////////////////////////////////
 
-sed -ie "s/RANCHER_SERVER/"${RANCHER_SERVER}"/" /etc/nginx/conf.d/rancher-server_proxy.conf
+sed -ie "s/RANCHER_SERVER/"${RANCHER_SERVER_IP}"/" /etc/nginx/conf.d/rancher-server_proxy.conf
 
 #/////////////////////////////////////////////////
 #// nginx exec
