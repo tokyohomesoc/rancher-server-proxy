@@ -8,4 +8,4 @@ WORKDIR /app/
 
 COPY docker-entrypoint.sh /app/
 
-ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh" ]
+ENTRYPOINT ["/bin/bash", "/app/docker-entrypoint.sh" ]
