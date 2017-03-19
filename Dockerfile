@@ -10,3 +10,4 @@ COPY docker-entrypoint.sh /app/
 COPY rancher-server_proxy.conf /etc/nginx/conf.d
 
 ENTRYPOINT ["/bin/bash", "/app/docker-entrypoint.sh" ]
+CMD ["nginx", "-g", "daemon off;"]
