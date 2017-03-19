@@ -1,0 +1,25 @@
+dist: trusty
+sudo: required
+services:
+  - docker
+
+env:
+  global:
+  - DOCKER_VERSION=1.13.1-0~ubuntu-trusty
+  matrix:
+  - TEST_TARGET: rancher-server-proxy
+
+before_install:
+  # list docker-engine versions
+  - apt-cache madison docker-engine
+  # upgrade docker-engine to specific version
+  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-engine=${DOCKER_VERSION}
+  - docker version
+  - docker info
+
+script:
+  - make $TEST_TARGET
+
+notifications:
+  slack:
+    secure: eqTZDP4o8FKS2aYcOWRZNVQH7lGGol48h3MkMvIxhqaClDqds25EoGzd9PzwgVw0Dpu70OjujYD0sD/+NT/Z57003hgd0r/uIXAhZPXooGCtb0NBglR5t1Gyp0IcVrOZVfbeonGbbIxL25YUbyp75Ac9mpn9muykPVmAN6W5Il3LZPpfjrN58gRS5N4V1PPtb7zMzSWdr3QMjG4i4OmDlPrkXMUKg0afL1en+brME8ILE6K7wrZflGe2Pr7/Jq3sY1LJg8VFM2yM33Q3ireQvpMQCLM1x+3tHTCrSaG37kqVMhvbja1mAHNtocku4jvVijE4ym3glNq1aqEkoOdGPQQV5P5R1csVZi2MyUsYGcn3oBMZsMbmC9Nl7zsSLa8mAVJO4eKFWFn8H6VtNIauUlIzXhrMWUA9B6i+it34J9YoRCY1EB6J59qF+3qjDuAm4UwvfJCSw8BqixoPvFc4pWZWU22c3jCLQqVl85mliwGP7YiAn2bWbab2RyI1tiwC78QXBJ44OISl+PYiW3tjFacdabIf6H1jHqhkzSi9rV3clm10tvTanBhb67KhYvKKYymCH7yAEOPL/MxxX1vUdCAaFKVNFE/ldfCCmygJ6aheUqVHWVUQmu/S1kItNg7QwBloOjIlnWZG+S3Gki8ENrzB4gfZ9/H1SUzw9CzjBX4=
