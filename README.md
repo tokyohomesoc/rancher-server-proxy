@@ -7,9 +7,9 @@ services:
   image: tokyohomesoc/rancher-server-proxy
   container_name: rancher-server-proxy
   ports: 
-    - "8080:8080"
+    - "18080:8080"
   environment: 
-    - RANCHER_SERVER="172.17.0.3:8080"
+    - RANCHER_SERVER_IP="172.17.0.3:8080"
 ```
 
 ## LICENSE
