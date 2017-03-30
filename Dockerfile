@@ -1,13 +1,9 @@
-FROM tokyohomesoc/nginx
+FROM tokyohomesoc/nginx-proxy-alpine
 
 MAINTAINER HomeSOC Tokyo <github@homesoc.tokyo>
 
-RUN apk add --no-cache bash
 
 WORKDIR /app/
+COPY nginx.tmpl /app/nginx.tmpl
 
-COPY docker-entrypoint.sh /app/
-COPY rancher-server_proxy.conf /etc/nginx/conf.d
-
-ENTRYPOINT ["/bin/bash", "/app/docker-entrypoint.sh" ]
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/init"]
