@@ -5,4 +5,5 @@ MAINTAINER HomeSOC Tokyo <github@homesoc.tokyo>
 WORKDIR /app/
 COPY nginx.tmpl /app/nginx.tmpl
 
+ENTRYPOINT ["/init"]
 CMD ["nginx", "-g", "daemon off;"]
